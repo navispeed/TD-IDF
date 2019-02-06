@@ -19,7 +19,7 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
 
         StringTokenizer tokenizer = new StringTokenizer(line);
         while (tokenizer.hasMoreTokens()) {
-            final String string = tokenizer.nextToken().split("[^A-Za-z0-9]")[0].toLowerCase();
+            final String string = tokenizer.nextToken().replaceAll("[^A-Za-z]", "").toLowerCase();
             if (StopWord.exist(string)) {
                 continue;
             }
