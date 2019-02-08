@@ -1,4 +1,4 @@
-package eu.navispeed.wordcount;
+package eu.navispeed.hadoop.tfidf.wordcount;
 
 import java.util.Arrays;
 import java.util.HashSet;

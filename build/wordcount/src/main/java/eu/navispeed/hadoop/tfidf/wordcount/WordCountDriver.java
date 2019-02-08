@@ -1,4 +1,4 @@
-package eu.navispeed.wordcount;
+package eu.navispeed.hadoop.tfidf.wordcount;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.FileSystem;
@@ -32,8 +32,8 @@ public class WordCountDriver extends Configured implements Tool {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        job.setInputFormatClass(TextInputFormat.class);
-        job.setOutputFormatClass(TextOutputFormat.class);
+//        job.setInputFormatClass(TextInputFormat.class);
+//        job.setOutputFormatClass(TextOutputFormat.class);
 
         Path inputFilePath = new Path(args[0]);
         Path outputFilePath = new Path(args[1]);

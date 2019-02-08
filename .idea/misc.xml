@@ -7,7 +7,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/build/WordCount/pom.xml" />
+        <option value="$PROJECT_DIR$/build/WordPerDoc/pom.xml" />
+        <option value="$PROJECT_DIR$/build/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/build/common/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="1.8" project-jdk-type="JavaSDK" />

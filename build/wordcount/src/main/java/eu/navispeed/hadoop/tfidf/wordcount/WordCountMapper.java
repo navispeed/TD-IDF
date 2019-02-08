@@ -1,4 +1,4 @@
-package eu.navispeed.wordcount;
+package eu.navispeed.hadoop.tfidf.wordcount;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -16,15 +16,17 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
+        String docId = "docId";
 
         StringTokenizer tokenizer = new StringTokenizer(line);
         while (tokenizer.hasMoreTokens()) {
-            final String string = tokenizer.nextToken().replaceAll("[^A-Za-z]", "").toLowerCase();
-            if (StopWord.exist(string)) {
+            final String string = tokenizer.nextToken().replaceAll("[^A-Za-z]", "").toLowerCase().trim();
+            if (string.length() < 3 || StopWord.exist(string)) {
                 continue;
             }
             word.set(string);
             context.write(word, one);
+//            context.write(new TupleWritable(new Writable[]{word, new Text(docId)}), one);
         }
     }
 
