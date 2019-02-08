@@ -1,4 +1,4 @@
-package eu.navispeed.hadoop.tfidf.wordcount;
+package eu.navispeed.hadoop.tfidf.wordperdoc;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.FileSystem;
@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class WordCountDriver extends Configured implements Tool {
+public class WordPerDocDriver extends Configured implements Tool {
     public int run(String[] args) throws Exception {
         if (args.length != 2) {
             System.out.println("Usage: [input] [output]");
@@ -24,9 +24,9 @@ public class WordCountDriver extends Configured implements Tool {
         job.setJobName("wordcount");
 
         // On precise les classes MyProgram, Map et Reduce
-        job.setJarByClass(WordCountDriver.class);
-        job.setMapperClass(WordCountMapper.class);
-        job.setReducerClass(WordCountReducer.class);
+        job.setJarByClass(WordPerDocDriver.class);
+        job.setMapperClass(WordPerDocMapper.class);
+        job.setReducerClass(WordPerDocReducer.class);
 
         // Definition des types clé/valeur de notre problème
         job.setOutputKeyClass(Text.class);
@@ -54,8 +54,8 @@ public class WordCountDriver extends Configured implements Tool {
     }
 
     public static void main(String[] args) throws Exception {
-        WordCountDriver wordcountDriver = new WordCountDriver();
-        int res = ToolRunner.run(wordcountDriver, args);
+        WordPerDocDriver wordcountDriverPerDoc = new WordPerDocDriver();
+        int res = ToolRunner.run(wordcountDriverPerDoc, args);
         System.exit(res);
     }
 }

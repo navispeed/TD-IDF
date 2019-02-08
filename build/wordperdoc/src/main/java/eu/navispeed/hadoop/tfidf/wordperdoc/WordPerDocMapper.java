@@ -1,4 +1,4 @@
-package eu.navispeed.hadoop.tfidf.wordcount;
+package eu.navispeed.hadoop.tfidf.wordperdoc;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+public class WordPerDocMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     private final static IntWritable one = new IntWritable(1);
     private Text word = new Text();
@@ -25,7 +25,7 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
         StringTokenizer tokenizer = new StringTokenizer(line);
         while (tokenizer.hasMoreTokens()) {
             final String string = tokenizer.nextToken().replaceAll("[^A-Za-z]", "").toLowerCase().trim();
-            if (string.length() < 3 || StopWord.exist(string)) {
+            if (string.length() < 3) {
                 continue;
             }
             word.set(string + "," + docId);

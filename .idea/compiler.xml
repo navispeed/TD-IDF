@@ -10,11 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="common" target="8" />
-      <module name="tf-idf" target="1.5" />
       <module name="wordcount" target="8" />
-      <module name="WordCount" target="8" />
-      <module name="WordPerDoc" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

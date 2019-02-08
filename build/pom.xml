@@ -9,5 +9,6 @@
   <url>http://maven.apache.org</url>
   <modules>
     <module>wordcount</module>
+    <module>wordperdoc</module>
   </modules>
 </project>
